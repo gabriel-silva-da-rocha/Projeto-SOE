@@ -2,7 +2,7 @@
 Trabalho prático da disciplina de Sistemas Operacionais Embarcados no curso de Mestrado Profissional em Engenharia Elétrica da UEA.
 
 
-## 1. Objetivo do Projeto
+## 1. **Objetivo do Projeto**
 
 Este projeto foi desenvolvido como atividade prática da disciplina de **Sistemas Operacionais Embarcados** com o objetivo de demonstrar, em uma aplicação única e funcional, o uso integrado de:
 
@@ -14,7 +14,7 @@ A aplicação simula um sistema de monitoramento em que leituras de sensores sã
 
 ---
 
-## 2. Arquitetura Geral
+## 2. **Arquitetura Geral**
 
 ### Visão de alto nível
 
@@ -37,7 +37,7 @@ A aplicação simula um sistema de monitoramento em que leituras de sensores sã
 
 ---
 
-## 3. Mecanismos Utilizados
+## 3. **Mecanismos Utilizados**
 
 ### Programação concorrente
 
@@ -64,7 +64,7 @@ A aplicação simula um sistema de monitoramento em que leituras de sensores sã
 
 ---
 
-## 4. Organização do Código
+## 4. **Organização do Código**
 
 ```text
 Projeto-SOE/
@@ -78,3 +78,65 @@ Projeto-SOE/
   │   ├─ visualizador_shm.c  # processo leitor da memória compartilhada (opcional)
   │   └─ job_queue.c         # implementação da fila de jobs
   └─ README.md
+```
+
+## 5. **Como compilar**
+
+#### Servidor:
+
+```bash
+gcc -Wall -Wextra -O2 -Iinclude src/servidor_main.c src/job_queue.c -o servidor_main -lpthread
+```
+
+#### Processo do sensor:
+
+```bash
+gcc -Wall -Wextra -O2 -Iinclude src/sensor_proc.c -o sensor_proc -lpthread
+```
+
+#### Visualizador:
+
+```bash
+gcc -Wall -Wextra -O2 -Iinclude src/visualizador_shmem.c -o visualizador_shmem -lpthread
+```
+
+---
+
+## 6. **Como Executar**
+
+Abra **3 terminais**:
+
+---
+
+### **1️⃣ Terminal 1 — Executar o servidor**
+
+```bash
+./servidor_main
+```
+
+Ele:
+
+* Cria MQ e SHM
+* Cria threads consumidoras
+* Dispara o processo sensor via `fork + exec`
+
+---
+
+### **2️⃣ Terminal 2 — Executar o visualizador**
+
+```bash
+./visualizador_shmem
+```
+
+Ele exibe continuamente os valores atualizados na memória compartilhada.
+
+---
+
+### **3️⃣ Terminal 3 — (Opcional) Rodar sensores manualmente**
+
+```bash
+./sensor_proc
+```
+
+---
+

@@ -79,6 +79,7 @@ Projeto-SOE/
   │   └─ job_queue.c         # implementação da fila de jobs
   └─ README.md
 ```
+---
 
 ## 5. **Como compilar**
 
@@ -106,8 +107,6 @@ gcc -Wall -Wextra -O2 -Iinclude src/visualizador_shmem.c -o visualizador_shmem -
 
 Abra **3 terminais**:
 
----
-
 ### **1️⃣ Terminal 1 — Executar o servidor**
 
 ```bash
@@ -120,8 +119,6 @@ Ele:
 * Cria threads consumidoras
 * Dispara o processo sensor via `fork + exec`
 
----
-
 ### **2️⃣ Terminal 2 — Executar o visualizador**
 
 ```bash
@@ -129,8 +126,6 @@ Ele:
 ```
 
 Ele exibe continuamente os valores atualizados na memória compartilhada.
-
----
 
 ### **3️⃣ Terminal 3 — (Opcional) Rodar sensores manualmente**
 

@@ -67,7 +67,7 @@ A aplicação simula um sistema de monitoramento em que leituras de sensores sã
 ## 4. Organização do Código
 
 ```text
-SysMon-IPC/
+Projeto-SOE/
   ├─ include/
   │   ├─ common.h        # tipos e constantes globais (sensor_msg_t, nomes de recursos IPC)
   │   ├─ shared_data.h   # estrutura armazenada na memória compartilhada (sem_t + dados)
